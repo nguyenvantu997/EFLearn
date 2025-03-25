@@ -1,0 +1,17 @@
+D:\Learn\EFCore_Acitivity0402\EFCore_Library\bin\Debug\net7.0\EFCore_Library.deps.json
+D:\Learn\EFCore_Acitivity0402\EFCore_Library\bin\Debug\net7.0\EFCore_Library.runtimeconfig.json
+D:\Learn\EFCore_Acitivity0402\EFCore_Library\bin\Debug\net7.0\EFCore_Library.dll
+D:\Learn\EFCore_Acitivity0402\EFCore_Library\bin\Debug\net7.0\EFCore_Library.pdb
+D:\Learn\EFCore_Acitivity0402\EFCore_Library\bin\Debug\net7.0\InventoryModels.dll
+D:\Learn\EFCore_Acitivity0402\EFCore_Library\bin\Debug\net7.0\InventoryModels.pdb
+D:\Learn\EFCore_Acitivity0402\EFCore_Library\obj\Debug\net7.0\EFCore_Library.csproj.AssemblyReference.cache
+D:\Learn\EFCore_Acitivity0402\EFCore_Library\obj\Debug\net7.0\EFCore_Library.GeneratedMSBuildEditorConfig.editorconfig
+D:\Learn\EFCore_Acitivity0402\EFCore_Library\obj\Debug\net7.0\EFCore_Library.AssemblyInfoInputs.cache
+D:\Learn\EFCore_Acitivity0402\EFCore_Library\obj\Debug\net7.0\EFCore_Library.AssemblyInfo.cs
+D:\Learn\EFCore_Acitivity0402\EFCore_Library\obj\Debug\net7.0\EFCore_Library.csproj.CoreCompileInputs.cache
+D:\Learn\EFCore_Acitivity0402\EFCore_Library\obj\Debug\net7.0\EFCore_Library.csproj.CopyComplete
+D:\Learn\EFCore_Acitivity0402\EFCore_Library\obj\Debug\net7.0\EFCore_Library.dll
+D:\Learn\EFCore_Acitivity0402\EFCore_Library\obj\Debug\net7.0\refint\EFCore_Library.dll
+D:\Learn\EFCore_Acitivity0402\EFCore_Library\obj\Debug\net7.0\EFCore_Library.pdb
+D:\Learn\EFCore_Acitivity0402\EFCore_Library\obj\Debug\net7.0\EFCore_Library.genruntimeconfig.cache
+D:\Learn\EFCore_Acitivity0402\EFCore_Library\obj\Debug\net7.0\ref\EFCore_Library.dll

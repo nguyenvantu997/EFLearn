@@ -1,0 +1,12 @@
+D:\Learn\EFCore_Acitivity0402\InventoryManageHelper\bin\Debug\net7.0\InventoryManageHelper.deps.json
+D:\Learn\EFCore_Acitivity0402\InventoryManageHelper\bin\Debug\net7.0\InventoryManageHelper.dll
+D:\Learn\EFCore_Acitivity0402\InventoryManageHelper\bin\Debug\net7.0\InventoryManageHelper.pdb
+D:\Learn\EFCore_Acitivity0402\InventoryManageHelper\obj\Debug\net7.0\InventoryManageHelper.csproj.AssemblyReference.cache
+D:\Learn\EFCore_Acitivity0402\InventoryManageHelper\obj\Debug\net7.0\InventoryManageHelper.GeneratedMSBuildEditorConfig.editorconfig
+D:\Learn\EFCore_Acitivity0402\InventoryManageHelper\obj\Debug\net7.0\InventoryManageHelper.AssemblyInfoInputs.cache
+D:\Learn\EFCore_Acitivity0402\InventoryManageHelper\obj\Debug\net7.0\InventoryManageHelper.AssemblyInfo.cs
+D:\Learn\EFCore_Acitivity0402\InventoryManageHelper\obj\Debug\net7.0\InventoryManageHelper.csproj.CoreCompileInputs.cache
+D:\Learn\EFCore_Acitivity0402\InventoryManageHelper\obj\Debug\net7.0\InventoryManageHelper.dll
+D:\Learn\EFCore_Acitivity0402\InventoryManageHelper\obj\Debug\net7.0\refint\InventoryManageHelper.dll
+D:\Learn\EFCore_Acitivity0402\InventoryManageHelper\obj\Debug\net7.0\InventoryManageHelper.pdb
+D:\Learn\EFCore_Acitivity0402\InventoryManageHelper\obj\Debug\net7.0\ref\InventoryManageHelper.dll
