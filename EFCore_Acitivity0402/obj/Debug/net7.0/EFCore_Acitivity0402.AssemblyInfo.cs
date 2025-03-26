@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EFCore_Acitivity0402")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed637ec54789bf549cb96eb6d01ed252f49983ee")]
 [assembly: System.Reflection.AssemblyProductAttribute("EFCore_Acitivity0402")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EFCore_Acitivity0402")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
