@@ -11754,19 +11754,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ASUS\\.nuget\\packages\\": {}
+    "C:\\Users\\tu.nguyen\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Learn\\EFCore_Acitivity0402\\EFCore_Activity0601\\EFCore_Activity0601.csproj",
+      "projectUniqueName": "D:\\Test\\EFLearn\\EFCore_Activity0601\\EFCore_Activity0601.csproj",
       "projectName": "EFCore_Activity0601",
-      "projectPath": "D:\\Learn\\EFCore_Acitivity0402\\EFCore_Activity0601\\EFCore_Activity0601.csproj",
-      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "D:\\Learn\\EFCore_Acitivity0402\\EFCore_Activity0601\\obj\\",
+      "projectPath": "D:\\Test\\EFLearn\\EFCore_Activity0601\\EFCore_Activity0601.csproj",
+      "packagesPath": "C:\\Users\\tu.nguyen\\.nuget\\packages\\",
+      "outputPath": "D:\\Test\\EFLearn\\EFCore_Activity0601\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tu.nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11774,15 +11779,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\Learn\\EFCore_Acitivity0402\\InventoryModels\\InventoryModels.csproj": {
-              "projectPath": "D:\\Learn\\EFCore_Acitivity0402\\InventoryModels\\InventoryModels.csproj"
+            "D:\\Test\\EFLearn\\InventoryModels\\InventoryModels.csproj": {
+              "projectPath": "D:\\Test\\EFLearn\\InventoryModels\\InventoryModels.csproj"
             }
           }
         }
@@ -11791,7 +11795,13 @@
         "warnAsError": [
           "NU1605"
         ]
-      }
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net7.0": {
@@ -11843,7 +11853,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

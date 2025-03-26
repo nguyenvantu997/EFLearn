@@ -2572,7 +2572,10 @@
       },
       "InventoryModels/1.0.0": {
         "runtime": {
-          "InventoryModels.dll": {}
+          "InventoryModels.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
