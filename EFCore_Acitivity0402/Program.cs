@@ -15,9 +15,10 @@ public class Program
     {
         BuildOptions();
         //DeleteAllItems();
-        EnsureItems();
-        UpdateItems();
+        //EnsureItems();
+        //UpdateItems();
         ListInventory();
+        GetItemsForListing();
     }
 
     static void BuildOptions()
@@ -89,6 +90,19 @@ public class Program
             }
             db.Items.UpdateRange(items);
             db.SaveChanges();
+        }
+    }
+
+    private static void GetItemsForListing()
+    {
+        using (var db = new InventoryManageDbContext(_optionsBuilder.Options))
+        {
+            var results = db.ItemsForListing.FromSqlRaw("EXECUTE dbo.GetItemsForListing").ToList();
+
+            foreach (var item in results)
+            {
+                Console.WriteLine($"ITEM [{item.Name}] {item.Description}");
+            }
         }
     }
 }
