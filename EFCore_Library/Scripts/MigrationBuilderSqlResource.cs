@@ -23,7 +23,7 @@ namespace EFCore_Library.Scripts
                     var data = ms.ToArray();
 
                     // Decode the byte array into a string, ignoring the BOM (Byte Order Mark)
-                    var text = Encoding.UTF8.GetString(data, 0, data.Length - 3);
+                    var text = Encoding.UTF8.GetString(data, 0, data.Length);
 
                     // Use the SQL script text in the MigrationBuilder
                     return mb.Sql(text);

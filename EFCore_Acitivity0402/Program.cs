@@ -1,9 +1,9 @@
 ﻿using EFCore_Library;
 using InventoryManageHelper;
 using InventoryModels;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using static Azure.Core.HttpHeader;
 
 public class Program
 {
@@ -14,11 +14,19 @@ public class Program
     static void Main(string[] args)
     {
         BuildOptions();
-        //DeleteAllItems();
-        //EnsureItems();
-        //UpdateItems();
         ListInventory();
+
+        Console.WriteLine("============ Call Stored Procedures ============");
         GetItemsForListing();
+
+        Console.WriteLine("============ Call Calar Function ============");
+        GetAllActiveItemsAsPipeDelimitedString();
+
+        Console.WriteLine("============ Call Table Function ============");
+        GetItemsTotalValues();
+
+        Console.WriteLine("============ Call View Table ============");
+        GetFullItemDetails();
     }
 
     static void BuildOptions()
@@ -37,62 +45,6 @@ public class Program
         }
     }
 
-    static void EnsureItems()
-    {
-        EnsureItem("Batman Begins", "You either die the hero or live long enough to see yourself become the villain", "Christian Bale, Katie Holmes");
-        EnsureItem("Inception", "You mustn't be afraid to dream a little bigger, darling", "Leonardo DiCaprio, Tom Hardy, Joseph Gordon-Levitt");
-        EnsureItem("Remember the Titans", "Left Side, Strong Side", "Denzell Washington, Will Patton");
-        EnsureItem("Star Wars: The Empire Strikes Back", "He will join us or die, master", "Harrison Ford, Carrie Fisher, Mark Hamill");
-        EnsureItem("Top Gun", "I feel the need, the need for speed!", "Tom Cruise, Anthony Edwards, Val Kilmer");
-    }
-
-    private static void EnsureItem(string name, string description, string notes)
-    {
-        Random r = new Random(); using (var db = new InventoryManageDbContext(_optionsBuilder.Options))
-        {
-            //determine if item exists: 
-            var existingItem = db.Items.FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
-            if (existingItem == null)
-            {
-                // doesn't exist, add it. 
-                var item = new Item()
-                {
-                    Name = name,
-                    CreatedByUserId = _loggedInUserId,
-                    LastModifiedUserId = _loggedInUserId,
-                    Description = description,
-                    Notes = notes,
-                    IsActive = true,
-                    Quantity = r.Next()
-                }; db.Items.Add(item); db.SaveChanges();
-            }
-        }
-    }
-
-    private static void DeleteAllItems()
-    {
-        using (var db = new InventoryManageDbContext(_optionsBuilder.Options))
-        {
-            var items = db.Items.ToList();
-            db.Items.RemoveRange(items);
-            db.SaveChanges();
-        }
-    }
-
-    private static void UpdateItems()
-    {
-        using (var db = new InventoryManageDbContext(_optionsBuilder.Options))
-        {
-            var items = db.Items.ToList();
-            foreach (var item in items)
-            {
-                item.CurrentOrFinalPrice = 9.99M;
-            }
-            db.Items.UpdateRange(items);
-            db.SaveChanges();
-        }
-    }
-
     private static void GetItemsForListing()
     {
         using (var db = new InventoryManageDbContext(_optionsBuilder.Options))
@@ -102,6 +54,38 @@ public class Program
             foreach (var item in results)
             {
                 Console.WriteLine($"ITEM [{item.Name}] {item.Description}");
+            }
+        }
+    }
+
+    private static void GetAllActiveItemsAsPipeDelimitedString()
+    {
+        using (var db = new InventoryManageDbContext(_optionsBuilder.Options))
+        {
+            var isActiveParm = new SqlParameter("IsActive", 1);
+            var result = db.AllItemsOutput.FromSqlRaw("SELECT [dbo]. [ItemNamesPipeDelimitedString] (@IsActive) AllItems", isActiveParm).FirstOrDefault();
+            Console.WriteLine($"All active Items: {result.AllItems}");
+        }
+    }
+
+    private static void GetItemsTotalValues()
+    {
+        using (var db = new InventoryManageDbContext(_optionsBuilder.Options))
+        {
+            var isActiveParm = new SqlParameter("IsActive", 1);
+            var result = db.GetItemsTotalValues.FromSqlRaw("SELECT * from [dbo]. [GetItemsTotalValue] (@IsActive)", isActiveParm).ToList();
+            foreach (var item in result) { Console.WriteLine($"New Item] {item.Id,-10}" + $"|{item.Name,-50}" + $"|{item.Quantity,-4}" + $"|{item.TotalValue,-5}"); }
+        }
+    }
+
+    private static void GetFullItemDetails()
+    {
+        using (var db = new InventoryManageDbContext(_optionsBuilder.Options))
+        {
+            var result = db.FullItemDetailDtos.FromSqlRaw("SELECT * FROM [dbo]. [vwFullItemDetails] " + "ORDER BY ItemName, GenreName, Category, PlayerName ").ToList();
+            foreach (var item in result)
+            {
+                Console.WriteLine($"New Item] {item.Id,-10}" + $"|{item.ItemName,-50}" + $"|{item.ItemDescription,-4}" + $"|{item.PlayerName,-5}" + $"|{item.Category,-5}" + $"|{item.GenreName,-5}");
             }
         }
     }

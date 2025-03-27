@@ -4,6 +4,7 @@ using EFCore_Library;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCoreLibrary.Migrations
 {
     [DbContext(typeof(InventoryManageDbContext))]
-    partial class InventoryManageDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250327082759_createFunction_GetItemsTotalValue")]
+    partial class createFunctionGetItemsTotalValue
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -121,33 +124,6 @@ namespace EFCoreLibrary.Migrations
                     b.ToView("ItemsForListing", (string)null);
                 });
 
-            modelBuilder.Entity("InventoryModels.DTOs.GetItemsTotalValueDto", b =>
-                {
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal?>("PurchasePrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<decimal?>("TotalValue")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.ToTable((string)null);
-
-                    b.ToView("GetItemsTotalValues", (string)null);
-                });
-
             modelBuilder.Entity("InventoryModels.Genre", b =>
                 {
                     b.Property<int>("Id")
@@ -186,63 +162,6 @@ namespace EFCoreLibrary.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Genres");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedByUserId = "2fd28110-93d0-427d-9207-d55dbca680fa",
-                            CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            IsDeleted = false,
-                            LastModifiedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastModifiedUserId = "2fd28110-93d0-427d-9207-d55dbca680fa",
-                            Name = "Fantasy"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedByUserId = "2fd28110-93d0-427d-9207-d55dbca680fa",
-                            CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            IsDeleted = false,
-                            LastModifiedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastModifiedUserId = "2fd28110-93d0-427d-9207-d55dbca680fa",
-                            Name = "Sci/Fi"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreatedByUserId = "2fd28110-93d0-427d-9207-d55dbca680fa",
-                            CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            IsDeleted = false,
-                            LastModifiedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastModifiedUserId = "2fd28110-93d0-427d-9207-d55dbca680fa",
-                            Name = "Horror"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CreatedByUserId = "2fd28110-93d0-427d-9207-d55dbca680fa",
-                            CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            IsDeleted = false,
-                            LastModifiedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastModifiedUserId = "2fd28110-93d0-427d-9207-d55dbca680fa",
-                            Name = "Comedy"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CreatedByUserId = "2fd28110-93d0-427d-9207-d55dbca680fa",
-                            CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            IsDeleted = false,
-                            LastModifiedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LastModifiedUserId = "2fd28110-93d0-427d-9207-d55dbca680fa",
-                            Name = "Drama"
-                        });
                 });
 
             modelBuilder.Entity("InventoryModels.Item", b =>

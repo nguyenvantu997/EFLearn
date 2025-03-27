@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryModels", "Inventor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore_Activity0601", "EFCore_Activity0601\EFCore_Activity0601.csproj", "{5F99CA87-E7C5-45D8-BFD5-D2F14F28BCAC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryDataMigrator", "InventoryDataMigrator\InventoryDataMigrator.csproj", "{C1BC1093-BD4F-4631-B317-FDA0E9527200}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5F99CA87-E7C5-45D8-BFD5-D2F14F28BCAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F99CA87-E7C5-45D8-BFD5-D2F14F28BCAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F99CA87-E7C5-45D8-BFD5-D2F14F28BCAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1BC1093-BD4F-4631-B317-FDA0E9527200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1BC1093-BD4F-4631-B317-FDA0E9527200}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1BC1093-BD4F-4631-B317-FDA0E9527200}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1BC1093-BD4F-4631-B317-FDA0E9527200}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

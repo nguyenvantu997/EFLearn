@@ -4,6 +4,7 @@ using EFCore_Library;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCoreLibrary.Migrations
 {
     [DbContext(typeof(InventoryManageDbContext))]
-    partial class InventoryManageDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250327134932_dataUpdate_SeedGenresMigrationCategoriesInInventoryMigrator")]
+    partial class dataUpdateSeedGenresMigrationCategoriesInInventoryMigrator
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -195,7 +198,7 @@ namespace EFCoreLibrary.Migrations
                             CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             IsDeleted = false,
-                            LastModifiedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedDate = new DateTime(2025, 3, 27, 20, 49, 32, 10, DateTimeKind.Local).AddTicks(966),
                             LastModifiedUserId = "2fd28110-93d0-427d-9207-d55dbca680fa",
                             Name = "Fantasy"
                         },
@@ -206,7 +209,7 @@ namespace EFCoreLibrary.Migrations
                             CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             IsDeleted = false,
-                            LastModifiedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedDate = new DateTime(2025, 3, 27, 20, 49, 32, 10, DateTimeKind.Local).AddTicks(977),
                             LastModifiedUserId = "2fd28110-93d0-427d-9207-d55dbca680fa",
                             Name = "Sci/Fi"
                         },
@@ -217,7 +220,7 @@ namespace EFCoreLibrary.Migrations
                             CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             IsDeleted = false,
-                            LastModifiedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedDate = new DateTime(2025, 3, 27, 20, 49, 32, 10, DateTimeKind.Local).AddTicks(979),
                             LastModifiedUserId = "2fd28110-93d0-427d-9207-d55dbca680fa",
                             Name = "Horror"
                         },
@@ -228,7 +231,7 @@ namespace EFCoreLibrary.Migrations
                             CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             IsDeleted = false,
-                            LastModifiedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedDate = new DateTime(2025, 3, 27, 20, 49, 32, 10, DateTimeKind.Local).AddTicks(980),
                             LastModifiedUserId = "2fd28110-93d0-427d-9207-d55dbca680fa",
                             Name = "Comedy"
                         },
@@ -239,7 +242,7 @@ namespace EFCoreLibrary.Migrations
                             CreatedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             IsDeleted = false,
-                            LastModifiedDate = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastModifiedDate = new DateTime(2025, 3, 27, 20, 49, 32, 10, DateTimeKind.Local).AddTicks(982),
                             LastModifiedUserId = "2fd28110-93d0-427d-9207-d55dbca680fa",
                             Name = "Drama"
                         });

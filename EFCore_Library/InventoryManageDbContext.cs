@@ -15,6 +15,9 @@ namespace EFCore_Library
         public virtual DbSet<Player> Players { get; set; }
         public virtual DbSet<Genre> Genres { get; set; }
         public virtual DbSet<GetItemsForListingDto> ItemsForListing { get; set; }
+        public virtual DbSet<AllItemsPipeDelimitedStringDTO> AllItemsOutput { get; set; }
+        public virtual DbSet<GetItemsTotalValueDto> GetItemsTotalValues { get; set; }
+        public DbSet<FullItemDetailDto> FullItemDetailDtos { get; set; }
 
         public InventoryManageDbContext() { }
 
@@ -93,9 +96,42 @@ namespace EFCore_Library
 
             modelBuilder.Entity<GetItemsForListingDto>(x =>
             {
-                x.HasNoKey(); 
+                x.HasNoKey();
                 x.ToView("ItemsForListing");
             });
+
+            modelBuilder.Entity<AllItemsPipeDelimitedStringDTO>(x =>
+            {
+                x.HasNoKey();
+                x.ToView("AllItemsOutput");
+            });
+
+            modelBuilder.Entity<GetItemsTotalValueDto>(x =>
+            {
+                x.HasNoKey();
+                x.ToView("GetItemsTotalValues");
+            });
+
+            modelBuilder.Entity<FullItemDetailDto>(x =>
+            {
+                x.HasNoKey();
+                x.ToView("FullItemDetailDtos");
+            });
+
+
+            var genreCreateDate = new DateTime(2021, 01, 01);
+
+            modelBuilder.Entity<Genre>(x =>
+            {
+                x.HasData(
+                    new Genre() { Id = 1, CreatedDate = genreCreateDate, IsActive = true, IsDeleted = false, Name = "Fantasy", CreatedByUserId = _systemUserId, LastModifiedUserId = _systemUserId, LastModifiedDate = genreCreateDate },
+                    new Genre() { Id = 2, CreatedDate = genreCreateDate, IsActive = true, IsDeleted = false, Name = "Sci/Fi", CreatedByUserId = _systemUserId, LastModifiedUserId = _systemUserId, LastModifiedDate = genreCreateDate },
+                    new Genre() { Id = 3, CreatedDate = genreCreateDate, IsActive = true, IsDeleted = false, Name = "Horror", CreatedByUserId = _systemUserId, LastModifiedUserId = _systemUserId, LastModifiedDate = genreCreateDate },
+                    new Genre() { Id = 4, CreatedDate = genreCreateDate, IsActive = true, IsDeleted = false, Name = "Comedy", CreatedByUserId = _systemUserId, LastModifiedUserId = _systemUserId, LastModifiedDate = genreCreateDate },
+                    new Genre() { Id = 5, CreatedDate = genreCreateDate, IsActive = true, IsDeleted = false, Name = "Drama", CreatedByUserId = _systemUserId, LastModifiedUserId = _systemUserId, LastModifiedDate = genreCreateDate }
+                );
+            });
+
 
         }
 
