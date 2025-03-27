@@ -5,6 +5,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Scripts\Procedures\GetItemsForListing.v0.sql" />
+    <None Remove="Scripts\Procedures\GetItemsForListing.v1.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Procedures\GetItemsForListing\GetItemsForListing.v0.sql" />
+    <EmbeddedResource Include="Scripts\Procedures\GetItemsForListing\GetItemsForListing.v1.sql" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">

@@ -1,4 +1,5 @@
 ﻿using InventoryModels;
+using InventoryModels.DTOs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -13,6 +14,7 @@ namespace EFCore_Library
         public virtual DbSet<CategoryDetail> CategoryDetails { get; set; }
         public virtual DbSet<Player> Players { get; set; }
         public virtual DbSet<Genre> Genres { get; set; }
+        public virtual DbSet<GetItemsForListingDto> ItemsForListing { get; set; }
 
         public InventoryManageDbContext() { }
 
@@ -88,6 +90,13 @@ namespace EFCore_Library
             modelBuilder.Entity<ItemGenre>()
                         .HasIndex(ig => new { ig.ItemId, ig.GenreId })
                         .IsUnique();
+
+            modelBuilder.Entity<GetItemsForListingDto>(x =>
+            {
+                x.HasNoKey(); 
+                x.ToView("ItemsForListing");
+            });
+
         }
 
     }

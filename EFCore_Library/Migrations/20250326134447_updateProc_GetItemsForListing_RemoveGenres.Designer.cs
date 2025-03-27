@@ -4,6 +4,7 @@ using EFCore_Library;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCoreLibrary.Migrations
 {
     [DbContext(typeof(InventoryManageDbContext))]
-    partial class InventoryManageDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250326134447_updateProc_GetItemsForListing_RemoveGenres")]
+    partial class updateProcGetItemsForListingRemoveGenres
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
