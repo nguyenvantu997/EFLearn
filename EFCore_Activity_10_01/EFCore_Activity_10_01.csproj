@@ -26,6 +26,7 @@
     <ProjectReference Include="..\EFCore_Library\EFCore_Library.csproj" />
     <ProjectReference Include="..\InventoryManageHelper\InventoryManageHelper.csproj" />
   </ItemGroup>
+
   <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -1,5 +1,4 @@
-﻿using EFCore_AdventureWorks;
-using EFCore_AdventureWorks.DTOs;
+﻿using EFCore_Activity_10_02;
 using InventoryManageHelper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -23,8 +22,6 @@ public class Program
             return;
         }
 
-        GenerateSalesReportData(filter);
-
         //Console.WriteLine("List People Then Order and Take");
         //ListPeopleThenOrderAndTake();
         //Console.WriteLine("Query People, order, then list and take");
@@ -43,28 +40,6 @@ public class Program
         //    }
         //}
 
-    }
-
-    private static void GenerateSalesReportData(decimal saleYtd)
-    {
-        using (var db = new AdventureWorks2019Context(_optionsBuilder.Options))
-        {
-            var salesReportData = db.SalesPeople.Select(sp => new SalesReportListingDto
-            {
-                BusinessEntityId = sp.BusinessEntityId,
-                FirstName = sp.BusinessEntity.BusinessEntity.FirstName,
-                LastName = sp.BusinessEntity.BusinessEntity.LastName,
-                SalesYtd = sp.SalesYtd,
-                Territories = sp.SalesTerritoryHistories.Select(y => y.Territory.Name),
-                TotalOrders = sp.SalesOrderHeaders.Count(),
-                TotalProductsSold = sp.SalesOrderHeaders.SelectMany(y => y.SalesOrderDetails).Sum(z => z.OrderQty)
-            }).Where(srdata => srdata.SalesYtd > saleYtd).OrderBy(srds => srds.LastName).ThenBy(srds => srds.FirstName).ThenByDescending(srds => srds.SalesYtd).ToList();
-
-            foreach (var srd in salesReportData)
-            {
-                Console.WriteLine(srd.ToString());
-            }
-        }
     }
 
     private static void ShowAllSalespeopleUsingProjection()

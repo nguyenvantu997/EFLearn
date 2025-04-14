@@ -1,12 +1,21 @@
-﻿using EFCore_Library;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using EFCore_Acitivity0402;
+using EFCore_Library;
 using InventoryManageHelper;
 using InventoryModels;
+using InventoryModels.DTOs;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using static Azure.Core.HttpHeader;
 
 public class Program
 {
+    static MapperConfiguration _mapperConfig;
+    static IMapper _mapper;
+    static IServiceProvider _serviceProvider;
     static IConfigurationRoot _configuration;
     static DbContextOptionsBuilder<InventoryManageDbContext> _optionsBuilder;
 
@@ -14,19 +23,30 @@ public class Program
     static void Main(string[] args)
     {
         BuildOptions();
-        ListInventory();
+        MapperConfig();
 
-        Console.WriteLine("============ Call Stored Procedures ============");
-        GetItemsForListing();
+        //Console.WriteLine("============ Call ListInventory ============");
+        //ListInventory();
 
-        Console.WriteLine("============ Call Calar Function ============");
-        GetAllActiveItemsAsPipeDelimitedString();
+        //Console.WriteLine("============ Call ListInventoryWithProjection ============");
+        //ListInventoryWithProjection();
 
-        Console.WriteLine("============ Call Table Function ============");
-        GetItemsTotalValues();
+        Console.WriteLine("============ Call ListCategoriesAndColors ============");
+        ListCategoriesAndColors();
+        //Console.WriteLine("============ Call GetItemsForListing ============");
+        //GetItemsForListing();
 
-        Console.WriteLine("============ Call View Table ============");
-        GetFullItemDetails();
+        //Console.WriteLine("============ Call GetItemsForListingLinq ============");
+        //GetItemsForListingLinq();
+
+        //Console.WriteLine("============ Call Calar GetAllActiveItemsAsPipeDelimitedString ============");
+        //GetAllActiveItemsAsPipeDelimitedString();
+
+        //Console.WriteLine("============ Call Table GetItemsTotalValues ============");
+        //GetItemsTotalValues();
+
+        //Console.WriteLine("============ Call View GetFullItemDetails ============");
+        //GetFullItemDetails();
     }
 
     static void BuildOptions()
@@ -34,6 +54,23 @@ public class Program
         _configuration = ConfigurationBuilderSingleton.ConfigurationRoot;
         _optionsBuilder = new DbContextOptionsBuilder<InventoryManageDbContext>();
         _optionsBuilder.UseSqlServer(_configuration.GetConnectionString("InventoryManager"));
+    }
+
+    static void MapperConfig()
+    {
+        var service = new ServiceCollection();
+        service.AddAutoMapper(typeof(InventoryMapper));
+        _serviceProvider = service.BuildServiceProvider();
+
+        _mapperConfig = new MapperConfiguration(cfg =>
+        {
+            cfg.AllowNullCollections = true;
+            cfg.ShouldMapMethod = (m => false);//this is solution
+            cfg.AddProfile<InventoryMapper>();
+        });
+
+        _mapperConfig.AssertConfigurationIsValid();
+        _mapper = _mapperConfig.CreateMapper();
     }
 
     private static void ListInventory()
@@ -49,13 +86,65 @@ public class Program
     {
         using (var db = new InventoryManageDbContext(_optionsBuilder.Options))
         {
-            var results = db.ItemsForListing.FromSqlRaw("EXECUTE dbo.GetItemsForListing").ToList();
+            var items = db.Items.OrderBy(x => x.Name).ToList();
+            var results = _mapper.Map<List<Item>, List<ItemDto>>(items);
+
+            results.ForEach(x => Console.WriteLine($"new item: {x}"));
+        }
+    }
+
+    private static void GetItemsForListingLinq()
+    {
+        var minDateValue = new DateTime(2021, 1, 1);
+        var maxDateValue = new DateTime(2028, 1, 1);
+        using (var db = new InventoryManageDbContext(_optionsBuilder.Options))
+        {
+            var results = db.Items.Select(x => new ItemDto
+            {
+                CreatedDate = x.CreatedDate,
+                CategoryName = x.Category.Name,
+                Description = x.Description,
+                IsActive = x.IsActive,
+                IsDeleted = x.IsDeleted,
+                Name = x.Name,
+                Notes = x.Notes,
+                CategoryId = x.Category.Id,
+                Id = x.Id
+            })
+            .Where(x => x.CreatedDate >= minDateValue && x.CreatedDate <= maxDateValue)
+            .OrderBy(y => y.CategoryName).ThenBy(z => z.Name).ToList();
 
             foreach (var item in results)
             {
-                Console.WriteLine($"ITEM [{item.Name}] {item.Description}");
+                Console.WriteLine($"ITEM {item}");
             }
         }
+    }
+
+    private static void ListInventoryWithProjection()
+    {
+        using (var db = new InventoryManageDbContext(_optionsBuilder.Options))
+        {
+            var items = db.Items.OrderBy(x => x.Name).ProjectTo<ItemDto>(_mapper.ConfigurationProvider).ToList();
+            items.ForEach(x => Console.WriteLine($"New Item: {x}"));
+        }
+    }
+
+    private static void ListCategoriesAndColors()
+    {
+        using (var db = new InventoryManageDbContext(_optionsBuilder.Options))
+        {
+            var results = db.Categories
+                .Include(x => x.CategoryDetail)
+                .ProjectTo<CategoryDto>(_mapper.ConfigurationProvider)
+                .ToList();
+
+            foreach (var c in results)
+            {
+                Console.WriteLine($"Category [{c.Category}] is {c.CategoryDetail.Color}");
+            }
+        }
+
     }
 
     private static void GetAllActiveItemsAsPipeDelimitedString()
