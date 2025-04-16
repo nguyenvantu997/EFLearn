@@ -37,9 +37,11 @@ namespace EFCore_Library
                     {
                         case EntityState.Added:
                             referenceEntity.CreatedDate = DateTime.UtcNow;
+                            referenceEntity.LastModifiedDate = DateTime.UtcNow;
                             if (string.IsNullOrWhiteSpace(referenceEntity.CreatedByUserId))
                             {
                                 referenceEntity.CreatedByUserId = _systemUserId;
+                                referenceEntity.LastModifiedUserId = _systemUserId;
                             }
                             break;
                         case EntityState.Modified:
