@@ -23,11 +23,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore_Activity_10_01", "EF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore_Activity_10_02", "EFCore_Activity_10_02\EFCore_Activity_10_02.csproj", "{65D18F44-4735-4C81-A7FD-522224A3A921}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore_Activity_11_01", "EFCore_Activity_11_01\EFCore_Activity_11_01.csproj", "{ED529F76-8775-4DA7-9904-2D1CE5049AA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore_Activity_11_01", "EFCore_Activity_11_01\EFCore_Activity_11_01.csproj", "{ED529F76-8775-4DA7-9904-2D1CE5049AA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryDatabaseLayer", "InventoryDatabaseLayer\InventoryDatabaseLayer.csproj", "{5493E05C-52AD-409F-90D6-01064C4C07AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryDatabaseLayer", "InventoryDatabaseLayer\InventoryDatabaseLayer.csproj", "{5493E05C-52AD-409F-90D6-01064C4C07AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryBusinessLayer", "InventoryBusinessLayer\InventoryBusinessLayer.csproj", "{7081B266-A881-49CE-936C-FE0F6DDDA057}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryBusinessLayer", "InventoryBusinessLayer\InventoryBusinessLayer.csproj", "{7081B266-A881-49CE-936C-FE0F6DDDA057}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagerUnitTests", "InventoryManagerUnitTests\InventoryManagerUnitTests.csproj", "{992FC07E-B31C-456F-A1DA-504340849F79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagerIntegrationTests", "InventoryManagerIntegrationTests\InventoryManagerIntegrationTests.csproj", "{12699C4D-E512-4EEB-9338-04AD9E370430}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +91,14 @@ Global
 		{7081B266-A881-49CE-936C-FE0F6DDDA057}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7081B266-A881-49CE-936C-FE0F6DDDA057}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7081B266-A881-49CE-936C-FE0F6DDDA057}.Release|Any CPU.Build.0 = Release|Any CPU
+		{992FC07E-B31C-456F-A1DA-504340849F79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{992FC07E-B31C-456F-A1DA-504340849F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{992FC07E-B31C-456F-A1DA-504340849F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{992FC07E-B31C-456F-A1DA-504340849F79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12699C4D-E512-4EEB-9338-04AD9E370430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12699C4D-E512-4EEB-9338-04AD9E370430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12699C4D-E512-4EEB-9338-04AD9E370430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12699C4D-E512-4EEB-9338-04AD9E370430}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

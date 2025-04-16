@@ -15,6 +15,11 @@ namespace InventoryBusinessLayer
             _mapper = mapper;
             _dbRepo = new ItemRepos(dbContext, mapper);
         }
+        public ItemService(IItemRepos dbRepo, IMapper mapper)
+        {
+            _dbRepo = dbRepo;
+            _mapper = mapper;
+        }
 
         public List<ItemDto> GetItems() { return _mapper.Map<List<ItemDto>>(_dbRepo.GetItems()); }
         public List<ItemDto> GetItemsByDateRange(DateTime minDateValue, DateTime maxDateValue) { return _dbRepo.GetItemsByDateRange(minDateValue, maxDateValue); }
